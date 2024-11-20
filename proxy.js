@@ -1,6 +1,6 @@
 export default async function sendRequest(req) {
   const request = await fetch(
-    "https://erzu0u5rye.execute-api.ap-south-1.amazonaws.com/default/fr",
+    "https://3t2mxdqyx1.execute-api.ap-south-1.amazonaws.com/default/fr",
     {
       method: req.method,
       headers: req.headers,
