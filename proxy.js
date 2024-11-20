@@ -1,4 +1,4 @@
-async function sendRequest(req) {
+export default async function sendRequest(req) {
   const request = await fetch(
     "https://erzu0u5rye.execute-api.ap-south-1.amazonaws.com/default/fr",
     {
@@ -10,5 +10,3 @@ async function sendRequest(req) {
   const response = await request.json();
   return response;
 }
-
-module.exports = sendRequest;
