@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(cors());
 
-const s3_link = "https://fr-data1.s3.ap-south-1.amazonaws.com/students.json";
+const s3_link = "https://fr-data.s3.ap-south-1.amazonaws.com/students.json";
 
 async function getAllStudents() {
   const response = await fetch(s3_link);
