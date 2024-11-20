@@ -1,14 +1,15 @@
-const express = require("express");
-const fetch = require("node-fetch");
-const cors = require("cors");
+import express from "express";
+import fetch from "node-fetch";
+import cors from "cors";
 
-const sendRequest = require("./proxy");
+import sendRequest from "./proxy.js";
 
 const app = express();
 app.use(express.json({ limit: "50mb" }));
 app.use(cors());
 
-const s3_link = 'https://fr-data1.s3.ap-south-1.amazonaws.com/students.json';
+const s3_link = "https://fr-data1.s3.ap-south-1.amazonaws.com/students.json";
+
 async function getAllStudents() {
   const response = await fetch(s3_link);
   const result = await response.json();
@@ -30,7 +31,8 @@ app.all("/cors-proxy", async (req, res) => {
     const response = await sendRequest(req);
     res.status(200).json(response.body);
   } catch (e) {
-    console.log(e);
+    console.error(e);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
